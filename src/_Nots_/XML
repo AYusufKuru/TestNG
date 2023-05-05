@@ -1,0 +1,121 @@
+
+
+
+
+------------------------------------------- Yapı
+     @BeforeSuite
+       @BeforeTest
+         @BeforeGroups
+           @BeforeClass
+             @BeforeMethod
+                 @Test1 method
+                 @Test2 method
+             @AfterMethod
+           @AfterClass
+         @AfterGroups
+       @AfterTest
+     @AfterSuite
+
+------------------------------------------- Basic
+
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="Suite">        --> Tüm testleri kapsayan bölüm
+
+    <test name="test1">     --> test 1 i kapsayan bölüm
+        <classes>           --> çalışacak classların yazıldığı bölüm
+            <class name="Gun04._01_Intro"> </class>
+        </classes>
+    </test>
+</suite>
+
+------------------------------------------- Multiple Classes
+
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="Suite">
+
+    <test name="test1">
+        <classes>
+            <class name="Gun04._01_Intro"> </class>
+            <class name="Gun04._02_Intro"> </class>
+        </classes>
+    </test>
+</suite>
+
+------------------------------------------- Multiple Tests
+
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="Suite">
+
+    <test name="test1">
+        <classes>
+            <class name="Gun04._01_Intro"> </class>
+        </classes>
+    </test>
+    <test name="test2">
+        <classes>
+            <class name="Gun04._02_Intro"> </class>
+        </classes>
+    </test>
+</suite>
+
+------------------------------------------- Groups
+
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="Suite">
+
+    <test name="test1">
+        <groups>
+            <run>
+                <include name="SmokeTest"></include> --> Çalıştırılıcak gruplar
+                <exclude name="SmokeTest"></exclude> --> Haricinde çalıştırılıcak testler
+            </run>
+        </groups>
+        <classes>
+            <class name="Gun04._03_Groups"> </class>
+        </classes>
+    </test>
+</suite>
+------------------------------------------- Paralel
+
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="Suit" parallel="tests" thread-count="2">  --> Paralel çalıştırmak
+
+    <test name="test1">
+        <parameter name="browserTipi" value="firefox"></parameter>
+
+        <classes>
+            <class name="Gun05._05_Task_2"></class>
+        </classes>
+    </test>
+
+    <test name="test2">
+        <parameter name="browserTipi" value="chrome"></parameter>
+
+        <classes>
+            <class name="Gun05._05_Task_2"></class>
+        </classes>
+    </test>
+
+</suite>
+
+------------------------------------------- Parametre gönderme
+
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="Suite">
+<parameter name="aranacakKelime" value="mac"></parameter>    --> Tüm testlerde geçerli olan parametre
+
+    <test name="test1">
+        <parameter name="mesaj" value="Açılın yeni testerlar geliyor"></parameter> --> Gönderilecek parametre
+        <classes>
+            <class name="Gun04._04_ContactUs"> </class>
+        </classes>
+    </test>
+</suite>
+
+--Classtan parametreyi alma
+    @Test
+    @Parameters("mesaj")                 --> XML'den gelen parametreyi yakalama
+    void contactUs(String gelenMesaj){}  --> Yakalanan parametreyi değişkene atama
+
+-------------------------------------------
+

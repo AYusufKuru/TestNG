@@ -1,0 +1,21 @@
+POM (Page Object Model)
+
+     * Bu sayfadaki bütün elemenalrın driverlar bağlantısı gerekiyor
+     * bunun için aşağıdaki consructor eklendi ve için PageFatory ile
+     * driver üzerinden bu (this) sayfadaki bütün elemnalar ilşkilendirildi.
+     * Böylece Sayfada dan nesne türetildiği zaman değil, kullanıldığı
+     * anda elemanların bulunması aktif oluyor.Bu yöntemle bütün sayfalarda
+     * aynı isimde elemanlar var ise buradaki tanımlama hepsi için geçerli hale
+     * gelmiş oluyor. buna yapıya Page Object Model (POM) adı veriliyor.
+
+             **-- Consructor --**
+
+    public _03_PlaceOrderElements() {
+           PageFactory.initElements(BaseDriver.driver, this);
+           // driver.findElement ı hepsi için yap
+        }
+
+         -*-Dizi-*-                 -*-Tekil-*-
+    @FindBy(css="Locator")      @FindBy(id="Locator")
+    List<WebElemen> isim;       WebElemen isim;
+

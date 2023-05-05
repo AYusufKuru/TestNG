@@ -1,0 +1,44 @@
+
+
+---------------------------------------------------------- Test tanımlama
+@Test()
+    public void Test1(){}
+----------------------------------------------------------
+@Test(!-!)
+
+priority = 1 --> Testlere sıralama vermek için kullanılır.
+dependsOnMethods = {"Test ismi"}                   --> Bir testi başka bir teste bağlama
+                   {"Test ismi", "Test ismi"}      --> Birden fazla teste bağlama
+                   {"Test ismi"},alwaysRun = true) --> Bir sorun çıksada mutlaka çalışır
+dataProvider ="datalarim"
+
+---------------------------------------------------------- Dataprovider
+
+     * Dataproviderın içindeki bütün veriler tek tek test e gönderilir
+     * Data sayısı kadar test çalıştırılır, dataların olduğu yere DataProvider annottion'ı konur.
+     * Çalıştırılacak teste ise dataProvider = "getData"  bölümü eklenir.
+     * Dataprovider bir testi birden fazla DATA ile çok çalıştırmak için kullanılır.
+     * XML filer file gruplama, pararalel, ve farklı tesleri koordine edip birarada çalıştırmak için kullanılır.
+
+
+@Test(dataProvider ="datalarim" )   --> Şeklinde çağırılır.
+void UserNameTest(String useradi){} --> Gelen eleman sayısı kadar değişken atamamız gerekir
+
+@DataProvider
+    Object[] datalarim() --> DataProvider olarak kullanılcak metodun tipi Object olmak zorunda.
+    {
+        Object[] userlar={"Nurhayat","Alper","Uğur","Hakan"};
+
+        return userlar;
+    }
+
+        Object[][] data={               --> Çok boyutlu veri gönderme
+                {"Nurhayat","122333"},
+                {"Alper","ererer"},
+                {"Uğur","ererer3343"},
+                {"Hakan","sdsdsd"}
+
+void UsernameTest(String username, String password){}  --> Çoklu eleman yakalama
+
+----------------------------------------------------------
+By isim = By.linkText("Locator");

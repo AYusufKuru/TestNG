@@ -1,0 +1,35 @@
+Gun01  -- 02
+/*
+        @BeforeClass      -->   Class ın başında çalışacak   (driver işlemleri)
+           @BeforeMethod  -->   Her metoddan(test metodları) önce çalışacak
+               @Test      -->   testlerin çalıştığı metodlar
+               @Test      -->   testlerin çalıştığı metodlar
+           @AfterMethod   -->   Her metoddan sonra çalışacak
+        @AfterClass       -->   Class ın çalışmasının sonunda çalışacak (driver kapat)
+     */
+
+
+
+
+
+    Logları temizleme kodları
+
+Logger logger= Logger.getLogger("");
+        logger.setLevel(Level.SEVERE);
+
+        // outputtaki gerekmeyen logları kaldıracağız
+        System.setProperty(ChromeDriverService.CHROME_DRIVER_SILENT_OUTPUT_PROPERTY, "true");
+
+
+        chrome güncelleme gelince düzeltmek için kullanılabilecek kod blok'u
+
+    ChromeOptions options = new ChromeOptions();
+            options.addArguments("--remote-allow-origins=*");
+            driver = new ChromeDriver(options);
+
+
+Bayatlama gun03-02
+
+
+1-loglardaki çıkan bildirimleri temizlemeyi araştır farklı tarayıcılar için
+2- gun02 -04 By isim araştır

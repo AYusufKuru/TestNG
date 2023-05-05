@@ -1,0 +1,20 @@
+
+(Hard Assert)
+Assert.
+        assertEquals(Actual, Expected, msg(opsiyonel));    --> Eşit mi
+        assertNotEquals(Actual, Expected, msg(opsiyonel));
+        assertTrue(Expected(s1==s2), msg(opsiyonel));      --> Doğru mu
+        assertNull(dgr_1, msg(opsiyonel));
+        fail();                                            --> Hata verir
+
+(Soft Assert)
+SoftAssert _softAsser = new SoftAssert();    --> Soft assert oluşturuyoruz
+
+_softAsser.
+           assertlerin herhangi biri
+
+ _softAsser.assertAll();  --> Yazılan bütün assert sonuçları işleme koyulur.
+
+    * Hard assertten farkı hata raporlarını son satırda işleme koyduğumuz için
+    * Hard assert gibi yazıldığı yerde hata vermek yerine
+    * Hataları son satırda toplu olarak verir prgramın akışı bozulmamış olur.
